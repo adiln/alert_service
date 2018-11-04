@@ -10,14 +10,14 @@ application up and running.
 * System dependencies
  
 * Configuration
-   bundle install
+ *  bundle install
 
 * Database creation
-  rake db:setup
+ * rake db:setup
 * Database initialization
 
 * How to run the test suite
-  rspec
+ * rspec
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
