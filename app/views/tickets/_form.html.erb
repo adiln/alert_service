@@ -1,0 +1,7 @@
+<div class="form-group">
+  <%= form_tag({controller: "tickets", action: "create"}, method: "post") do %>
+    <%= label_tag(:json, "Json:") %>
+    <%= text_area_tag 'json_text', json_data, rows: 5, class: 'form-control' %>
+    <%= submit_tag "submit", class: "btn btn-primary" %>
+  <% end %>
+</div>

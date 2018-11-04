@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Ticket #</th>
+    <th scope="col">Request Number</th>
+    <th scope="col">Sequence Number</th>
+    <th scope="col">Request Type</th>
+    <th scope="col">Date Times</th>
+    <th scope="col">Service Area</th>
+    <th scope="col">Excavator Company Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% tickets.each do|ticket| %>
+  <tr>
+    <th scope="row"><%= ticket.id %></th>
+    <td><%= ticket.request_number %></td>
+    <td><%= ticket.sequence_number %></td>
+    <td><%= ticket.request_type %></td>
+    <td><%= get_date_times(ticket.date_times) %></td>
+    <td><%= get_service_area(ticket.service_area) %></td>
+    <td><%= ticket.excavators.map { |excavator| excavator.company_name }.join(',') %></td>
+    <td><%= link_to 'Show', ticket %></td>
+  </tr>
+    <% end %>
+  </tbody>
+</table>

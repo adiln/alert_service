@@ -1,0 +1,16 @@
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-8 border border-secondary">
+    <%=render 'form', json_data: @json_data %>
+  </div>
+  <div class="col-lg-12">
+    <%=render 'tickets', tickets: @tickets %>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,53 @@
+<%= link_to 'Back to Tickets', tickets_path %>
+<!-- Map start here --->
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+<script>
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+        markers = handler.addMarkers([
+            {
+                "lat": 0,
+                "lng": 0,
+                "picture": {
+                    "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+                    "width":  32,
+                    "height": 32
+                },
+                "infowindow": "hello!"
+            }
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+    });
+    //markers = handler.addMarkers(<%#=raw @digsiteinfo %>);
+    markers = handler.addMarkers(41.850033, -87.6500523);
+</script>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">Ticket #: <%= @ticket.id %></th>
+    </tr>
+    <tr>
+      <td>Request Number: <%= @ticket.request_number %></td>
+    </tr>
+    <tr>
+      <td>Sequence Number: <%= @ticket.sequence_number %></td>
+    </tr>
+    <tr>
+      <td>Request Type: <%= @ticket.request_type %></td>
+    </tr>
+    <tr>
+      <td>Date Times: <%= get_date_times(@ticket.date_times) %></td>
+    </tr>
+    <tr>
+      <td>Service Area: <%= get_service_area(@ticket.service_area) %></td>
+    </tr>
+  <tr>
+    <td>Excavator Company Name: <%= @ticket.excavators.map { |excavator| excavator.company_name }.join(',') %></td>
+  </tr>
+  </tbody>
+</table>
+
